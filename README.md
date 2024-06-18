@@ -17,3 +17,35 @@ As part of the Turn Page Club experience, consider the following prompts for boo
 - **Would you recommend this book to other readers? Why?**
 
 These prompts aim to guide members in reflecting on their reading journey, encouraging them to delve deeper into the themes, characters, and narrative techniques used by the authors.
+
+## Environment and tools
+
+To develop and run this project, the following tools and environments are used:
+
+- **Node.js**: JavaScript runtime for building and running the development server.
+- **npm**: Package manager for Node.js, used to manage project dependencies.
+- **Prettier**: Code formatter to maintain consistent code style.
+- **ESLint**: Tool for identifying and fixing linting issues in JavaScript code.
+- **React**: Frontend library for building user interfaces.
+
+## Steps to run and debug
+
+Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed. Then, follow these steps:
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/NataliTrindade/processo-taqtile
+    cd processo-taqtile 
+    ```
+
+2. Install the dependencies:
+    ```bash
+    npm install
+    ```
+
+3. Start the development server:
+    ```bash
+    npm run start
+    ```
+
+4. Open your browser and navigate to `http://localhost:3000` to view the application.
