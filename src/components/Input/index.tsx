@@ -1,3 +1,5 @@
+import styles from "./Input.module.css";
+
 interface InputProps {
     label: string;
     type: "email" | "password";
@@ -11,9 +13,10 @@ interface InputProps {
 const Input = ({ label, type, value, id, name, placeholder, required = false }: InputProps) => {
 
     return (
-        <div >
-            <label htmlFor={id}>{label}</label>
+        <div className={styles.input_container}>
+            <label className={styles.label} htmlFor={id}>{label}</label>
             <input
+                className={styles.input}
                 value={value}
                 id={id}
                 name={name}
