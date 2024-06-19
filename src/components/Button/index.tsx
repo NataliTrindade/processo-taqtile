@@ -3,7 +3,7 @@ import styles from "./Button.module.css";
 
 interface ButtonProps {
     children: ReactElement | string;
-    disabled: boolean;
+    disabled?: boolean;
 }
 
 const Button = ({ children, disabled }: ButtonProps) => {
