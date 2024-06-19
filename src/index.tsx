@@ -4,6 +4,7 @@ import App from './App';
 import "./styles.css"
 import { ApolloProvider } from '@apollo/client';
 import { client } from "./apollo/client";
+import "./styles.css"
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
