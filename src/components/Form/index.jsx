@@ -1,11 +1,12 @@
 import Button from '../Button';
 import Input from '../Input';
+import styles from "./Form.module.css";
 
 const LoginForm = () => {
     return (
-        <section>
-            <h1>Bem-vindo(a) à Taqtile!</h1>
-            <form>
+        <section className={styles.section}>
+            <h1 className={styles.title}>Bem-vindo(a) à Taqtile!</h1>
+            <form className={styles.form}>
                 <Input
                     id='email'
                     label='Email'
