@@ -8,7 +8,6 @@ interface InputProps {
     id: string;
     name: string;
     placeholder: string;
-<<<<<<< HEAD
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
     onBlur: () => void;
     errorMessage: string;
@@ -27,19 +26,6 @@ const Input = ({
     errorMessage,
     required = false
 }: InputProps) => {
-=======
-    onChange: (value: string) => void;
-    required?: boolean;
-}
-
-const Input = ({ label, type, value, id, name, placeholder, onChange, required = false }: InputProps) => {
-
-    const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        onChange(value);
-    }
-
->>>>>>> 01cd809 (feat(actions): add actions for Input component)
     return (
         <div className={styles.input_container}>
             <label className={styles.label} htmlFor={id}>{label}</label>
