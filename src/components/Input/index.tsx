@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import styles from "./Input.module.css";
 
 interface InputProps {
@@ -7,11 +8,24 @@ interface InputProps {
     id: string;
     name: string;
     placeholder: string;
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    onBlur: () => void;
+    errorMessage: string;
     required?: boolean;
 }
 
-const Input = ({ label, type, value, id, name, placeholder, required = false }: InputProps) => {
-
+const Input = ({
+    label,
+    type,
+    value,
+    id,
+    name,
+    placeholder,
+    onChange,
+    onBlur,
+    errorMessage,
+    required = false
+}: InputProps) => {
     return (
         <div className={styles.input_container}>
             <label className={styles.label} htmlFor={id}>{label}</label>
@@ -23,7 +37,10 @@ const Input = ({ label, type, value, id, name, placeholder, required = false }: 
                 type={type}
                 placeholder={placeholder}
                 required={required}
+                onChange={onChange}
+                onBlur={onBlur}
             />
+            {errorMessage && <span className={styles.error}>{errorMessage}</span>}
         </div>
     )
 }
