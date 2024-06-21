@@ -1,20 +1,19 @@
-// @ts-check
-
-import eslint from "@eslint/js";
-import { configs as tsConfigs } from "@typescript-eslint/eslint-plugin";
-
-export default {
-  ...eslint.configs.recommended,
-  ...tsConfigs.recommended,
-  ...tsConfigs.strict,
-  ...tsConfigs.stylistic,
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'prettier'],
+  extends: [
+      'eslint:recommended',
+      'plugin:@typescript-eslint/recommended',
+      'prettier',
+      'prettier/@typescript-eslint',
+  ],
   rules: {
-    "prettier/prettier": [
-      "error",
-      {},
-      {
-        "usePrettierrc": false
-      }
-    ]
-  }
+      'prettier/prettier': [
+          'error',
+          {
+              endOfLine: 'auto',
+          },
+      ],
+  },
 };
