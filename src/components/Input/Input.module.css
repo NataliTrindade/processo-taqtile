@@ -28,3 +28,7 @@ input:focus {
     border-color: #ff1493; 
     box-shadow: 0 0 5px rgba(255, 20, 147, 0.5);
 }
+
+.error {
+    color: #d00d;
+}
