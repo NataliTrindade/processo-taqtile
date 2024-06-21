@@ -11,8 +11,8 @@ interface UseFormValidationProps {
 }
 
 const useFormValidation = (inputType?: 'email' | 'password'): UseFormValidationProps => {
-    const [value, setValue] = useState<string>('');
-    const [errorMessage, setErrorMessage] = useState<string>('');
+    const [value, setValue] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const onInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
         setValue(event.target.value);
