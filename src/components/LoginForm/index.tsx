@@ -4,6 +4,7 @@ import Input from '../Input';
 import styles from "./LoginForm.module.css";
 import useFormValidation from '../../hooks/useFormValidation';
 import useAuthenticateUser from '../../auth/useAuthenticateUser';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
     const {
@@ -22,7 +23,9 @@ const LoginForm = () => {
         errorMessage: errorMessagePassword
     } = useFormValidation('password');
 
-    const { authenticateUser, error } = useAuthenticateUser();
+    const { authenticateUser, error, loading } = useAuthenticateUser();
+    const navigate = useNavigate();
+
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -34,7 +37,10 @@ const LoginForm = () => {
             return;
         }
 
-        await authenticateUser(email, password);
+        const authenticated = await authenticateUser(email, password);
+        if (authenticated === true) {
+            navigate('/blank');
+        }
     };
 
     return (
