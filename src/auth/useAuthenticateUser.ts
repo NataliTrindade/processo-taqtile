@@ -3,7 +3,7 @@ import { LOGIN_MUTATION } from '../graphql/mutations/mutations';
 import { saveToken } from './authService';
 
 const useAuthenticateUser = () => {
-    const [login, { error }] = useMutation(LOGIN_MUTATION);
+    const [login, { error, loading }] = useMutation(LOGIN_MUTATION);
 
     const authenticateUser = async (email: string, password: string) => {
         try {
@@ -17,6 +17,7 @@ const useAuthenticateUser = () => {
             });
             const token = response.data.login.token;
             saveToken(token);
+            return true;
         } catch (error: unknown) {
             if (error) {
                 return {
@@ -33,7 +34,7 @@ const useAuthenticateUser = () => {
         }
     };
 
-    return { authenticateUser, error };
+    return { authenticateUser, error, loading };
 };
 
 export default useAuthenticateUser;
