@@ -72,7 +72,7 @@ const LoginForm = () => {
                     errorMessage={errorMessagePassword}
                 />
                 <Button disabled={loading}>
-                    {loading ? "Logando..." : 'Entrar'}
+                    {loading ? "Estamos te conectando..." : 'Entrar'}
                 </Button>
 
             </form>
