@@ -71,8 +71,8 @@ const LoginForm = () => {
                     onBlur={validatePasswordInput}
                     errorMessage={errorMessagePassword}
                 />
-                <Button>
-                    Entrar
+                <Button disabled={loading}>
+                    {loading ? "Logando..." : 'Entrar'}
                 </Button>
 
             </form>
