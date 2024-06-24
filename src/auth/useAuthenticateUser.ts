@@ -17,7 +17,7 @@ const useAuthenticateUser = () => {
             });
             const token = response.data.login.token;
             saveToken(token);
-        } catch (error: any) {
+        } catch (error: unknown) {
             if (error) {
                 return {
                     error: {
