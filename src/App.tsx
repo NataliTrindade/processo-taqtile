@@ -1,5 +1,5 @@
 import LoginForm from "./components/LoginForm";
-import BlankPage from "./components/BlankPage";
+import UsersList from "./components/UsersList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {
@@ -7,7 +7,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route index element={<LoginForm />} />
-        <Route path="blank" element={<BlankPage />} />
+        <Route path="users" element={<UsersList />} />
       </Routes>
     </BrowserRouter>
   )
