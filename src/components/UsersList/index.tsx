@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_USERS } from '../../graphql/queries/queries';
+import { useState } from 'react';
 
 interface User {
   id: string;
@@ -9,7 +9,7 @@ interface User {
 }
 
 const UsersList = () => {
-  const [limit] = useState(10);
+  const limit = 20;
   const [offset, setOffset] = useState(0);
   const { data, loading, fetchMore } = useQuery(GET_USERS, {
     variables: { offset, limit },
@@ -21,14 +21,13 @@ const UsersList = () => {
     fetchMore({
       variables: {
         offset: offset + limit,
-        limit: 10,
+        limit: limit,
       },
       updateQuery: (prevResult, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prevResult;
         return {
           users: {
             nodes: [...prevResult.users.nodes, ...fetchMoreResult.users.nodes],
-            pageInfo: fetchMoreResult.users.pageInfo,
           },
         };
       },
