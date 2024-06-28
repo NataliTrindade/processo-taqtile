@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_USERS } from '../../graphql/queries/queries';
+import { useNavigate } from 'react-router-dom';
 
 interface User {
   id: string;
@@ -14,6 +15,7 @@ const UsersList = () => {
   const { data, loading, fetchMore } = useQuery(GET_USERS, {
     variables: { offset, limit },
   });
+  const navigate = useNavigate();
 
   if (loading && !data) return <p>Loading users...</p>;
 
@@ -39,6 +41,10 @@ const UsersList = () => {
     });
   };
 
+  const navigateToAddUser = () => {
+    navigate('/add-user'); 
+  };
+
   return (
     <div>
       <ul>
@@ -55,6 +61,9 @@ const UsersList = () => {
         </button>
       )}
       {loading && <p>Loading more...</p>}
+      <button onClick={navigateToAddUser}>
+          Adiciononar Usuário
+        </button>
     </div>
   );
 };
