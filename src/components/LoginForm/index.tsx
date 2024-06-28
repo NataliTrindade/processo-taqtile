@@ -39,7 +39,7 @@ const LoginForm = () => {
 
         const authenticated = await authenticateUser(email, password);
         if (authenticated === true) {
-            navigate('/blank');
+            navigate('/users');
         }
     };
 
