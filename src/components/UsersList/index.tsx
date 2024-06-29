@@ -41,15 +41,14 @@ const UsersList = () => {
     });
   };
 
-  const navigateToAddUser = () => {
-    navigate('/add-user'); 
-  };
+  const navigateToAddUser = () => navigate('/add-user');
+  const navigateToUserDetails = (userId: string) => navigate(`/user-details/${userId}`);
 
   return (
     <div>
       <ul>
         {data?.users.nodes.map((user: User) => (
-          <li key={user.id}>
+          <li key={user.id} onClick={() => navigateToUserDetails(user.id)}>
             <p>{user.name}</p>
             <p>{user.email}</p>
           </li>
@@ -62,8 +61,8 @@ const UsersList = () => {
       )}
       {loading && <p>Loading more...</p>}
       <button onClick={navigateToAddUser}>
-          Adiciononar Usuário
-        </button>
+        Adiciononar Usuário
+      </button>
     </div>
   );
 };
