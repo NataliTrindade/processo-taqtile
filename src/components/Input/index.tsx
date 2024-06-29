@@ -8,17 +8,24 @@ interface InputProps {
     id: string;
     name: string;
     placeholder: string;
-    onChange: (value: string) => void;
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    onBlur: () => void;
+    errorMessage: string;
     required?: boolean;
 }
 
-const Input = ({ label, type, value, id, name, placeholder, onChange, required = false }: InputProps) => {
-
-    const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
-        const { value } = event.target;
-        onChange(value);
-    }
-
+const Input = ({
+    label,
+    type,
+    value,
+    id,
+    name,
+    placeholder,
+    onChange,
+    onBlur,
+    errorMessage,
+    required = false
+}: InputProps) => {
     return (
         <div className={styles.input_container}>
             <label className={styles.label} htmlFor={id}>{label}</label>
@@ -30,8 +37,10 @@ const Input = ({ label, type, value, id, name, placeholder, onChange, required =
                 type={type}
                 placeholder={placeholder}
                 required={required}
-                onChange={onChangeInput}
+                onChange={onChange}
+                onBlur={onBlur}
             />
+            {errorMessage && <span className={styles.error}>{errorMessage}</span>}
         </div>
     )
 }
