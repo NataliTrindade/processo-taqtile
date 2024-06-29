@@ -1,7 +1,9 @@
+import { FormEvent } from 'react';
 import Button from '../Button';
 import Input from '../Input';
 import styles from "./LoginForm.module.css";
 import useFormValidation from '../../hooks/useFormValidation';
+import useAuthenticateUser from '../../auth/useAuthenticateUser';
 
 const LoginForm = () => {
     const {
@@ -20,9 +22,19 @@ const LoginForm = () => {
         errorMessage: errorMessagePassword
     } = useFormValidation('password');
 
-    const handleSubmit = (event) => {
+    const { authenticateUser, error } = useAuthenticateUser();
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
         handleEmailSubmit(event);
         handlePasswordSubmit(event);
+
+        if (errorMessageEmail || errorMessagePassword) {
+            return;
+        }
+
+        await authenticateUser(email, password);
     };
 
     return (
@@ -53,8 +65,12 @@ const LoginForm = () => {
                     onBlur={validatePasswordInput}
                     errorMessage={errorMessagePassword}
                 />
-                <Button>Entrar</Button>
+                <Button>
+                    Entrar
+                </Button>
+
             </form>
+            {error && <p className={styles.error}>ERRO: {error.message}</p>}
         </section>
     );
 }
