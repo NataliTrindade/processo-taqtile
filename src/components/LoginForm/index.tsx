@@ -1,10 +1,10 @@
 import { FormEvent } from 'react';
 import Button from '../Button';
 import Input from '../Input';
-import styles from "./LoginForm.module.css";
 import useFormValidation from '../../hooks/useFormValidation';
 import useAuthenticateUser from '../../auth/useAuthenticateUser';
 import { useNavigate } from 'react-router-dom';
+import Title from '../../Title';
 
 const LoginForm = () => {
     const {
@@ -26,7 +26,6 @@ const LoginForm = () => {
     const { authenticateUser, error, loading } = useAuthenticateUser();
     const navigate = useNavigate();
 
-
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
@@ -44,9 +43,9 @@ const LoginForm = () => {
     };
 
     return (
-        <section className={styles.section}>
-            <h1 className={styles.title}>Bem-vindo(a) à Taqtile!</h1>
-            <form className={styles.form} method='post' onSubmit={handleSubmit}>
+        <main className='main h-screen'>
+            <Title>Bem-vindo(a) à Taqtile!</Title>
+            <form className='form w-10/12 lg:w-2/4' method='post' onSubmit={handleSubmit}>
                 <Input
                     id='email'
                     label='Email'
@@ -74,11 +73,10 @@ const LoginForm = () => {
                 <Button disabled={loading}>
                     {loading ? "Estamos te conectando..." : 'Entrar'}
                 </Button>
-
+                {error && <p className='error text-center'>{error.message}</p>}
             </form>
-            {error && <p className={styles.error}>ERRO: {error.message}</p>}
-        </section>
+        </main>
     );
-}
+};
 
 export default LoginForm;
