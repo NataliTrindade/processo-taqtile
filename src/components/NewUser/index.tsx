@@ -1,9 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../../graphql/mutations/mutations';
 import { useNavigate } from 'react-router-dom';
 import { newUserValidationSchema } from '../../utils/inputValidations';
+import Title from '../../Title';
+import Button from '../Button';
 
 const initialValues = {
   name: '',
@@ -45,59 +46,61 @@ const NewUser = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={newUserValidationSchema}
-      onSubmit={handleSubmit}
-    >
-      <Form>
-        <div>
-          <label htmlFor="name">Nome:</label>
-          <Field type="text" id="name" name="name" />
-          <ErrorMessage name="name" />
-        </div>
+    <main className='main'>
+      <Formik
+        className="main"
+        initialValues={initialValues}
+        validationSchema={newUserValidationSchema}
+        onSubmit={handleSubmit}
+      >
+        <>
+          <Title>Criar Usuário</Title>
+          <Form className='form mb-10 w-10/12 lg:w-2/4'>
+            <div>
+              <label htmlFor="name" className='label'>Nome:</label>
+              <Field type="text" id="name" name="name" className="input" />
+              <ErrorMessage name='name' render={msg => <span className="error inline-block">{msg}</span>} />
+            </div>
 
-        <div>
-          <label htmlFor="email">Email:</label>
-          <Field type="email" id="email" name="email" />
-          <ErrorMessage name="email" />
-        </div>
+            <div>
+              <label htmlFor="email" className='label'>Email:</label>
+              <Field type="email" id="email" name="email" className="input" />
+              <ErrorMessage name='email' render={msg => <span className="error inline-block">{msg}</span>} />
+            </div>
 
-        <div>
-          <label htmlFor="phone">Telefone:</label>
-          <Field type="text" id="phone" name="phone" />
-          <ErrorMessage name="phone" />
-        </div>
+            <div>
+              <label htmlFor="phone" className='label'>Telefone:</label>
+              <Field type="text" id="phone" name="phone" className="input" />
+              <ErrorMessage name='phone' render={msg => <span className="error inline-block">{msg}</span>} />
+            </div>
 
-        <div>
-          <label htmlFor="birthDate">Data de Nascimento:</label>
-          <Field type="date" id="birthDate" name="birthDate" />
-          <ErrorMessage name="birthDate" />
-        </div>
+            <div>
+              <label htmlFor="birthDate" className='label'>Data de Nascimento:</label>
+              <Field type="date" id="birthDate" name="birthDate" className="input" />
+              <ErrorMessage name='birthDate' render={msg => <span className="error inline-block">{msg}</span>} />
+            </div>
 
-        <div>
-          <label htmlFor="password">Senha:</label>
-          <Field type="password" id="password" name="password" />
-          <ErrorMessage name="password" />
-        </div>
+            <div>
+              <label htmlFor="password" className='label'>Senha:</label>
+              <Field type="password" id="password" name="password" className="input" />
+              <ErrorMessage name='password' render={msg => <span className="error inline-block">{msg}</span>} />
+            </div>
 
-        <div>
-          <label htmlFor="role">Tipo de Usuário:</label>
-          <Field as="select" id="role" name="role" defaultValue="">
-            <option value="" disabled>Escolha uma opção</option>
-            <option value="admin">Administrador</option>
-            <option value="user">Usuário</option>
-          </Field>
-          <ErrorMessage name="role" />
-        </div>
-
-        <button type="submit" disabled={loading}>
-          Criar Usuário
-        </button>
-
-        {error && <p>{error.message}</p>}
-      </Form>
-    </Formik>
+            <div>
+              <label htmlFor="role" className='label'>Tipo de Usuário:</label>
+              <Field className="input" as="select" id="role" name="role" defaultValue="">
+                <option value="" disabled>Escolha uma opção</option>
+                <option value="admin">Administrador</option>
+                <option value="user">Usuário</option>
+              </Field>
+              <ErrorMessage name='role' render={msg => <span className="error inline-block">{msg}</span>} />
+            </div>
+            <Button>Criar Usuário</Button>
+            {error && <p className="error text-center">{error.message}</p>}
+          </Form>
+        </>
+      </Formik>
+    </main>
   );
 };
 
