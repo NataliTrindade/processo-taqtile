@@ -1,5 +1,4 @@
 import { ChangeEvent } from "react";
-import styles from "./Input.module.css";
 
 interface InputProps {
     label: string;
@@ -27,10 +26,10 @@ const Input = ({
     required = false
 }: InputProps) => {
     return (
-        <div className={styles.input_container}>
-            <label className={styles.label} htmlFor={id}>{label}</label>
+        <div>
+            <label htmlFor={id} className="label">{label}</label>
             <input
-                className={styles.input}
+                className="input"
                 value={value}
                 id={id}
                 name={name}
@@ -40,7 +39,7 @@ const Input = ({
                 onChange={onChange}
                 onBlur={onBlur}
             />
-            {errorMessage && <span className={styles.error}>{errorMessage}</span>}
+            {errorMessage && <span className="error">{errorMessage}</span>}
         </div>
     )
 }
