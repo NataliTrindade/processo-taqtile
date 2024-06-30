@@ -1,0 +1,11 @@
+.form {
+    @apply p-6 w-6/12 shadow-xl rounded-lg;
+}
+
+.label {
+    @apply text-sm font-normal text-gray-800;
+}
+
+.input {
+    @apply p-4 w-full outline-none rounded-lg border-2 border-solid border-zinc-200 focus:border-fuchsia-400 focus:shadow-fuchsia-300 focus:shadow-lg my-4;
+}

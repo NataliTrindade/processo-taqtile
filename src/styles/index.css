@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "./form.css";
+
+.main {
+    @apply flex flex-col justify-center items-center;
+}
+
+.user-item-details {
+    @apply flex flex-col lg:flex-row justify-between items-center p-4 mb-3 rounded-lg w-full border-2 border-solid border-zinc-200;
+}
