@@ -1,17 +1,18 @@
 import { ReactElement } from 'react';
-import styles from "./Button.module.css";
 
 interface ButtonProps {
     children: ReactElement | string;
-    disabled: boolean;
+    disabled?: boolean;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button = ({ children, disabled }: ButtonProps) => {
+const Button = ({ children, disabled, onClick }: ButtonProps) => {
     return (
         <button
             type="submit"
             disabled={disabled}
-            className={styles.button}
+            onClick={onClick}
+            className="font-bold text-white text-base w-full rounded-lg	min-h-11 my-2 bg-fuchsia-600 hover:bg-fuchsia-700 transition ease-in-out duration-300"
         >
             {children}
         </button>
