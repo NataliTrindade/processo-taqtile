@@ -26,28 +26,30 @@ const UserDetails = () => {
     return (
         <main className="main mx-0 min-h-screen">
             <Title>Detalhes do Usuário</Title>
-            <div className="w-10/12 lg:w-2/4 mx-0">
-                <p className="user-item-details">
-                    <span className="font-bold mb-2 lg:mb-0">Data de Nascimento:</span>
+            <div  className="w-10/12 lg:w-2/4 mx-0 ">
+            <ul className="flex flex-col gap-4">
+                <li className="user-item-details">
+                    <span className="font-bold">Data de Nascimento:</span>
                     <span>{user.birthDate}</span>
-                </p>
-                <p className="user-item-details">
-                    <span className="font-bold mb-2 lg:mb-0">Email:</span>
+                </li>
+                <li className="user-item-details">
+                    <span className="font-bold">Email:</span>
                     <span>{user.email}</span>
-                </p>
-                <p className="user-item-details">
-                    <span className="font-bold mb-2 lg:mb-0">Nome:</span>
+                </li>
+                <li className="user-item-details">
+                    <span className="font-bold">Nome:</span>
                     <span>{user.name}</span>
-                </p>
-                <p className="user-item-details">
-                    <span className="font-bold mb-2 lg:mb-0">Telefone:</span>
+                </li>
+                <li className="user-item-details">
+                    <span className="font-bold">Telefone:</span>
                     <span>{user.phone}</span>
-                </p>
-                <p className="user-item-details mb-0">
+                </li>
+                <li className="user-item-details mb-0">
                     <span className="font-bold">Função:</span>
                     <span>{user.role}</span>
-                </p>
-                <Button onClick={navigateToUsers}>Voltar</Button>
+                </li>
+            </ul>
+            <Button onClick={navigateToUsers}>Voltar</Button>
             </div>
         </main>
     );
