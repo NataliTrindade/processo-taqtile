@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../../graphql/mutations/mutations';
 import { useNavigate } from 'react-router-dom';
@@ -15,11 +15,20 @@ const initialValues = {
   role: ''
 };
 
+interface FormValues  {
+  name: string;
+  email: string;
+  phone: string;
+  birthDate: string;
+  password: string;
+  role: string;
+};
+
 const NewUser = () => {
   const [createUser, { loading, error }] = useMutation(CREATE_USER);
   const navigate = useNavigate();
 
-  const handleSubmit = async (values: { name: any; email: any; phone: any; birthDate: any; password: any; role: any; }, { setSubmitting }: any) => {
+  const handleSubmit = async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
     try {
       const { data } = await createUser({
         variables: {
