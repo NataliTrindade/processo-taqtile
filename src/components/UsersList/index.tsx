@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_USERS } from '../../graphql/queries/queries';
 import { useNavigate } from 'react-router-dom';
+import Button from '../Button';
+import Title from '../../Title';
 
 interface User {
   id: string;
@@ -17,7 +19,7 @@ const UsersList = () => {
   });
   const navigate = useNavigate();
 
-  if (loading && !data) return <p>Loading users...</p>;
+  if (loading && !data) return <p className='text-center m-4'>Carregando usuários...</p>;
 
   const loadMoreUsers = () => {
     fetchMore({
@@ -45,25 +47,25 @@ const UsersList = () => {
   const navigateToUserDetails = (userId: string) => navigate(`/user-details/${userId}`);
 
   return (
-    <div>
-      <ul>
+    <main className='main w-full'>
+      <Title>Usuários</Title>
+      <ul className='flex flex-col gap-6 w-10/12 lg:w-2/4'>
         {data?.users.nodes.map((user: User) => (
-          <li key={user.id} onClick={() => navigateToUserDetails(user.id)}>
+          <li className="shadow-lg p-4 hover:cursor-pointer hover:shadow-purple-200 rounded-lg"
+            key={user.id} onClick={() => navigateToUserDetails(user.id)}>
             <p>{user.name}</p>
             <p>{user.email}</p>
           </li>
         ))}
       </ul>
-      {data?.users.pageInfo.hasNextPage && (
-        <button onClick={loadMoreUsers}>
-          Load More
-        </button>
-      )}
-      {loading && <p>Loading more...</p>}
-      <button onClick={navigateToAddUser}>
-        Adiciononar Usuário
-      </button>
-    </div>
+      <div className='w-10/12 lg:w-2/4 flex flex-col lg:flex-row gap-0 lg:gap-4 mt-3'>
+        {data?.users.pageInfo.hasNextPage && (
+          <Button onClick={loadMoreUsers}>Ver Mais</Button>
+        )}
+        {loading && <p>Carregando...</p>}
+        <Button onClick={navigateToAddUser}>Adicionar Usuário</Button>
+      </div>
+    </main>
   );
 };
 
