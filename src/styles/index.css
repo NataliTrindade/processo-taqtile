@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "./form.css";
 
 .main {
     @apply flex flex-col justify-center items-center;
@@ -9,4 +8,28 @@
 
 .user-item-details {
     @apply flex flex-col lg:flex-row justify-between items-center lg:gap-0 h-20 py-3 lg:py-0 lg:px-3 rounded-lg w-full border-2 border-solid border-zinc-200;
+}
+
+.custom-main {
+    @apply flex flex-col justify-center items-center p-4;
+}
+
+.custom-user-item-details {
+    @apply flex flex-col lg:flex-row justify-between items-center lg:gap-0 h-20 py-3 lg:py-0 lg:px-3 rounded-lg w-full border-2 border-solid border-zinc-200;
+}
+
+.custom-error {
+    @apply text-xs text-red-600
+}
+
+.custom-form {
+    @apply p-6 shadow-xl rounded-lg w-10/12 lg:w-2/4 flex flex-col gap-4;
+}
+
+.custom-label {
+    @apply text-sm font-normal text-gray-800;
+}
+
+.custom-input {
+    @apply p-4 w-full outline-none rounded-lg border-2 border-solid border-zinc-200 focus:border-fuchsia-400 focus:shadow-fuchsia-300 focus:shadow-lg;
 }
